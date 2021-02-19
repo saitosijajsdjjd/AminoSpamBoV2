@@ -56,7 +56,7 @@ def on_text_message(data):
 	msgId = data.message.messageId
 	comId = data.json["ndcId"]
 	
-	if content.startswith("Майнкрафт"):
+	if content.startswith("Zevi"):
 		global r
 		
 		sub_client = amino.SubClient(comId=str(comId), profile=client.profile)
