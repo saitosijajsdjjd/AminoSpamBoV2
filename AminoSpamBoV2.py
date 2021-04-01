@@ -15,6 +15,7 @@ print("▀░▀ ▀░░░▀ ▀ ▀░░▀ ░▀░ ▀▀░ █▀░ 
 print("▐▌░▐▌ █▀▀ █▀▀▄ ▄▀▀ ▀ ▄▀▄ █▄░█ ▒▄▀▄")
 print("░▀▄▀░ █▀▀ █▐█▀ ░▀▄ █ █░█ █░▀█ ░▒▄▀")
 print("░░▀░░ ▀▀▀ ▀░▀▀ ▀▀░ ▀ ░▀░ ▀░░▀ ▒█▄▄")
+communities = {}
 import amino
 client = amino.Client()
 email=str(input("Email/Почта:"))
@@ -32,10 +33,15 @@ def spam(sub_client, chatId, msgSpam, msgType):
         
 client = amino.Client()
 client.login(email=email, password=password)
-for name, id in zip(client.sub_clients().name, client.sub_clients().comId):
-    print(f"{name}: {id}")
-comid = input("Выберите сообщество(id): ")
-sub_client=amino.SubClient(comId=comid, profile=client.profile)
+clients = client.sub_clients(size=100)
+x = 0
+for name, id in zip(clients.name, clients.comId):
+    print(f"{x + 1}.{name}")
+    communities[x] = str(id)
+    x+=1
+
+communityid = communities[int(input("Выберите сообщество/Select the community: "))-1]
+sub_client = amino.SubClient(comId=communityid, profile=client.profile)
 
 chatInfo = sub_client.get_chat_threads(size=1000)
 for title, chatId in zip(chatInfo.title, chatInfo.chatId):
@@ -61,7 +67,7 @@ def on_text_message(data):
 		
 		sub_client = amino.SubClient(comId=str(comId), profile=client.profile)
 		
-		while r < 1000:
+		while r < 10000:
                     
 			r = r + 1
 
