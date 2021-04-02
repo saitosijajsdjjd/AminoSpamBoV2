@@ -15,6 +15,8 @@ print("▀░▀ ▀░░░▀ ▀ ▀░░▀ ░▀░ ▀▀░ █▀░ 
 print("▐▌░▐▌ █▀▀ █▀▀▄ ▄▀▀ ▀ ▄▀▄ █▄░█ ▒▄▀▄")
 print("░▀▄▀░ █▀▀ █▐█▀ ░▀▄ █ █░█ █░▀█ ░▒▄▀")
 print("░░▀░░ ▀▀▀ ▀░▀▀ ▀▀░ ▀ ░▀░ ▀░░▀ ▒█▄▄")
+chatlist = []
+chatnames = {}
 communities = {}
 import amino
 client = amino.Client()
@@ -43,11 +45,16 @@ for name, id in zip(clients.name, clients.comId):
 communityid = communities[int(input("Выберите сообщество/Select the community: "))-1]
 sub_client = amino.SubClient(comId=communityid, profile=client.profile)
 
-chatInfo = sub_client.get_chat_threads(size=1000)
-for title, chatId in zip(chatInfo.title, chatInfo.chatId):
-	print(f"{title}: {chatId}")
+z=0
+chats = sub_client.get_chat_threads(size=1000)
+for name, id in zip (chats.title, chats.chatId):
+	if name!=None:
+		print(f"{z + 1}.{name}")  
+		chatnames[x]=str(name)
+		chatlist.append(str(id))
+		z+=1
 
-chatid=input("Type chatid/Введите чат айди:")
+chatx = chatlist[int(input("Выберите чат/Select the chat: "))-1]
 
 print("\nLogged in/Бот зашел!")
 print("Print Zevi in selected chat/Введите Zevi в нужном чате!")
@@ -58,7 +65,7 @@ print("Print Zevi in selected chat/Введите Zevi в нужном чате!
 def on_text_message(data):
     
 	content = data.message.content
-	chatId = ('chatid'), ('chatid')
+	chatId = ('chatx'), ('chatx')
 	msgId = data.message.messageId
 	comId = data.json["ndcId"]
 	
@@ -69,7 +76,7 @@ def on_text_message(data):
 		
 		while r < 10000:
                     
-			r = r + 1
+			r = r + 0.0000001
 
 			
 			Thread(target=spam, args=(sub_client, chatId, msgSpam, msgType)).start()
