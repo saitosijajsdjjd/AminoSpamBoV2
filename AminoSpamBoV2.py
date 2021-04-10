@@ -15,24 +15,14 @@ print("▀░▀ ▀░░░▀ ▀ ▀░░▀ ░▀░ ▀▀░ █▀░ 
 print("▐▌░▐▌ █▀▀ █▀▀▄ ▄▀▀ ▀ ▄▀▄ █▄░█ ▒▄▀▄")
 print("░▀▄▀░ █▀▀ █▐█▀ ░▀▄ █ █░█ █░▀█ ░▒▄▀")
 print("░░▀░░ ▀▀▀ ▀░▀▀ ▀▀░ ▀ ░▀░ ▀░░▀ ▒█▄▄")
+communities = {}
 chatlist = []
 chatnames = {}
-communities = {}
 import amino
-client = amino.Client()
-email=str(input("Email/Почта:"))
-password=str(input("Password/Пароль:"))
-from threading import Thread
-r = 0
-msgSpam = str(input("Message/Сообщение:"))
-print('MessageTypes/Типы сообщений:Default-0,Transparent-110/100/115')
-msgType = int(input("MessageType/Тип сообщения:"))
-def spam(sub_client, chatId, msgSpam, msgType):
-    
-    while True:
-        try: sub_client.send_message(message=msgSpam, chatId=chatid, messageType=msgType)
-        except: pass
-        
+email = input("Email/Почта: ")
+password = input("Password/Пароль: ")
+message = input("Message/Сообщение: ")
+msgtype = input("MessageType/Тип сообщения: ")
 client = amino.Client()
 client.login(email=email, password=password)
 clients = client.sub_clients(size=100)
@@ -53,32 +43,11 @@ for name, id in zip (chats.title, chats.chatId):
 		chatnames[x]=str(name)
 		chatlist.append(str(id))
 		z+=1
-
 chatx = chatlist[int(input("Выберите чат/Select the chat: "))-1]
 
-print("\nLogged in/Бот зашел!")
-print("Print Zevi in selected chat/Введите Zevi в нужном чате!")
+sub_client.send_message(chatId=chatx, message=message, messageType=msgtype)
 
-@client.callbacks.event("on_text_message")
-
-
-def on_text_message(data):
-    
-	content = data.message.content
-	chatId = ('chatx'), ('chatx')
-	msgId = data.message.messageId
-	comId = data.json["ndcId"]
-	
-	if content.startswith("Zevi"):
-		global r
+while True:
+	with concurrent.futures.ThreadPoolExecutor(max_workers=1000000) as executor:
+		_ = [executor.submit(sub_client.send_message, chatx, message, msgtype) for _ in range(5000000)]
 		
-		sub_client = amino.SubClient(comId=str(comId), profile=client.profile)
-		
-		while r < 10000:
-                    
-			r = r + 0.0000001
-
-			
-			Thread(target=spam, args=(sub_client, chatId, msgSpam, msgType)).start()
-			
-			print(f"{str(r)}/sec")
