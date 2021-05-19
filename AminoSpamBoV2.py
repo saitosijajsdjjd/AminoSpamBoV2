@@ -2,19 +2,19 @@ from colorama import init, Fore, Back, Style
 init()
 print(Back.BLACK)
 print(Fore.CYAN)
-print("Script by Zevi/Скрипт сделан Zevi")
-print("┌────────────────────────────────────┐")
-print("│Author :  LilZevi                   │")
-print("│Github : https://github.com/LilZevi │")
-print("└────────────────────────────────────┘")
-print("YouTube: https://www.youtube.com/channel/UCJ61JlXJckmO6yJr8BDRuGQ")
-print("Telegram: @NowNameBo")
-print("▄▀▄ █▄░▄█ ▀ █▄░█ ▄▀▄ ▄▀▀ █▀▄ ▄▀▄ █▄░▄█ █▀▄ ▄▀▄")
-print("█▀█ █░█░█ █ █░▀█ █░█ ░▀▄ █░█ █▀█ █░█░█ █▀█ █░█")
-print("▀░▀ ▀░░░▀ ▀ ▀░░▀ ░▀░ ▀▀░ █▀░ ▀░▀ ▀░░░▀ ▀▀░ ░▀░")
-print("▐▌░▐▌ █▀▀ █▀▀▄ ▄▀▀ ▀ ▄▀▄ █▄░█ ▒▄▀▄")
-print("░▀▄▀░ █▀▀ █▐█▀ ░▀▄ █ █░█ █░▀█ ░▒▄▀")
-print("░░▀░░ ▀▀▀ ▀░▀▀ ▀▀░ ▀ ░▀░ ▀░░▀ ▒█▄▄")
+print("""Script by Zevi/Скрипт сделан Zevi
+┌────────────────────────────────────┐
+│Author :  LilZevi                   │
+│Github : https://github.com/LilZevi │
+└────────────────────────────────────┘
+YouTube: https://www.youtube.com/channel/UCJ61JlXJckmO6yJr8BDRuGQ
+Telegram: @NowNameBo
+▄▀▄ █▄░▄█ ▀ █▄░█ ▄▀▄ ▄▀▀ █▀▄ ▄▀▄ █▄░▄█ █▀▄ ▄▀▄
+█▀█ █░█░█ █ █░▀█ █░█ ░▀▄ █░█ █▀█ █░█░█ █▀█ █░█
+▀░▀ ▀░░░▀ ▀ ▀░░▀ ░▀░ ▀▀░ █▀░ ▀░▀ ▀░░░▀ ▀▀░ ░▀░
+▐▌░▐▌ █▀▀ █▀▀▄ ▄▀▀ ▀ ▄▀▄ █▄░█ ▒▄▀▄
+░▀▄▀░ █▀▀ █▐█▀ ░▀▄ █ █░█ █░▀█ ░▒▄▀
+░░▀░░ ▀▀▀ ▀░▀▀ ▀▀░ ▀ ░▀░ ▀░░▀ ▒█▄▄""")
 import amino, concurrent.futures
 email = input("Email/Почта: ")
 password = input("Password/Пароль: ")
