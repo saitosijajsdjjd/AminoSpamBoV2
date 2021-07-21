@@ -5,7 +5,7 @@ AminoSpamBoV2 Thread spam bot for Amino/Спам смс с потоками в �
 - apt upgrade
 - pip install colorama
 - pkg install python
-- pip install amino.py
+- pip install amino.py==1.2.17
 - apt install git
 - git clone https://github.com/LilZevi/AminoSpamBoV2
 - Для запуска/For starting
